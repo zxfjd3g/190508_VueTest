@@ -30,13 +30,34 @@
 -->
 
 <div id="app">
-  <h2>1. 双大括号表达式</h2>
+  <h2>1. 插值</h2>
+  <p>abcd---{{name}}</p>
+  <p>abcd---{{name.toUpperCase()}}</p>
 
   <h2>2. 指令一: 强制数据绑定</h2>
+  <a href="link">去培训</a>
+  <a v-bind:href="link">去培训</a>
+  <a :href="link">去培训</a>
 
   <h2>3. 指令二: 绑定事件监听</h2>
+  <button v-on:click="test($event, 'abc')">test</button>
 
 </div>
 
+  <script src="../js/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        name: 'Damu Love XiaoYu',
+        link: 'http://www.atguigu.com'
+      },
+      methods: {
+        test (event, msg) {
+          alert(event.target.innerHTML + '---' + msg)
+        }
+      }
+    })
+  </script>
 </body>
 </html>
