@@ -23,16 +23,60 @@
 <div id="example">
 
   <h2>1. 绑定监听</h2>
+  <button @click="test1">test1</button>
+  <button @click="test2('atguigu')">test2</button>
+  <button @click="test2('atguigu', $event)">test3</button>
 
   <h2>2. 事件修饰符</h2>
+  <!-- 
+    1. 阻止事件的默认行为
+    2. 停止事件冒泡
+   -->
+   <a href="http://www.baidu.com" @click.prevent='test3'>去百度</a>
+
+   <div style="width: 200px;height: 200px;background: blue;" @click.once="test4">
+      <div style="width: 100px;height: 100px;background: red;" @click.stop="test5"></div>
+   </div>
 
   <h2>3. 按键修饰符</h2>
+  <input type="text" v-model="msg" @keyup.13="test6">
+  <input type="text" v-model="msg" @keyup.enter="test6">
 
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
+  new Vue({
+    el: '#example',
+    data: {
+      msg: ''
+    },
+    methods: {
+      test1 (event) {
+        alert(event.target.innerHTML)
+      },
 
+      test2 (msg, e) {
+        alert(msg + '---' + e.target.innerText)
+      },
+
+      test3 () {
+        alert('点击了链接')
+      },
+
+      test4 () {
+        alert('外部')
+      },
+      test5 () {
+        alert('内部')
+      },
+      test6 (event) {
+        // if (event.keyCode===13) {
+          alert(this.msg)
+        // }
+      }
+    }
+  })
 </script>
 </body>
 </html>
