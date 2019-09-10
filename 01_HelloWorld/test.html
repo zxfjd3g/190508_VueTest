@@ -42,15 +42,18 @@
     }
   })
   // console.log(vue.msg)
-  vue.msg = 'damu'
+  vm.msg = 'damu'
  //  console.log(vue._data.msg)
 
- const vue2 = new Vue({// 配置对象
-    el: '#test2',  // element, 值是选择器
-    data: {// 包含n个可变数据的对象, 模板中可以直接操作
-      msg: 'atguigu22'
+  const vue2 = new Vue({// 配置对象
+    // el: '#test2',  // element, 值是选择器
+    data () {
+      return {// 包含n个可变数据的对象, 模板中可以直接操作
+        msg: 'atguigu22'
+      }
     }
   })
+  vue2.$mount('#test2')
 
 </script>
 </body>

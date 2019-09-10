@@ -32,14 +32,42 @@
 
 <div id="demo">
   <h2>1. class绑定: :class='xxx'</h2>
+  <div class="classC" :class="myClass">xxxxx</div>  <!-- 类名不确定的 -->
+  <div :class="{classA: hasA, classB: hasB}">yyyy</div> <!-- 什么时候用对象语法:  类名确定, 但不确定有没有-->
+  <div :class="['classA', 'classB']">zzzzzz</div>
 
   <h2>2. style绑定</h2>
+  <div :style="{color: activeColor, fontSize: fontSize + 'px'}">aaaaaaaa</div>
+
+
+  <hr/>
+  <button @click="update">更新</button>
 
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
+  new Vue({
+    data () {
+      return {
+        myClass: 'classA',
+        hasA: false,
+        hasB: true,
+        activeColor: 'red',
+        fontSize: 20
+      }
+    },
 
+    methods: {
+      update () {
+        this.myClass = 'classB'
+        this.hasA = !this.hasA
+        this.hasB = !this.hasB
+        this.activeColor = 'blue'
+        this.fontSize = 30
+      }
+    }
+  }).$mount('#demo')
 </script>
 </body>
 </html>
