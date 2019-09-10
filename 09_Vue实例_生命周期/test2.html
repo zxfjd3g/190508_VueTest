@@ -19,8 +19,8 @@
     * beforeDestory()
     * destoryed()
 2. 常用的生命周期方法
-  created()/mounted(): 发送ajax请求, 启动定时器等异步任务
-  beforeDestory(): 做收尾工作, 如: 清除定时器
+  mounted(): 发送ajax请求, 启动定时器等异步任务
+  beforeDestroy(): 做收尾工作, 如: 清除定时器
 -->
 
 <div id="test">
@@ -36,15 +36,32 @@
       isShow: true
     },
 
-    /* 
-    第一次显示之后立即执行一次
-    执行异步操作: 启动定时器, 发送ajax请求, 订阅消息
-     */
+    beforeCreate() {
+      console.log('beforeCreate()')
+    },
+   
+    created() {
+      console.log('created()')
+    },
+
+    beforeMount() {
+      console.log('beforeMount()')
+    },
+
     mounted () {
+      console.log('mounted()')
       this.intervalId = setInterval(() => {
         console.log('----')
         this.isShow = !this.isShow
       }, 1000)
+    },
+    
+    beforeUpdate() {
+      console.log('beforeUpdate()')
+    },
+
+    updated() {
+      console.log('updated()')
     },
 
     /* 
@@ -52,9 +69,13 @@
     做一些收尾的工作: 清除定时器, 取消订阅
      */
     beforeDestroy() {
+      console.log('beforeDestroy()')
       clearInterval(this.intervalId)
     },
 
+    destroyed() {
+      console.log('destroyed()')
+    },
     methods: {
       destroyVM () {
         this.$destroy()
