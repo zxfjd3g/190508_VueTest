@@ -84,7 +84,7 @@
 	vm/组件对象
 	生命周期图
 	主要的生命周期函数(钩子)
-    	created() / mounted(): 启动异步任务(启动定时器,发送ajax请求, 绑定监听)
+    	mounted(): 启动异步任务(启动定时器,发送ajax请求, 绑定监听)
     	beforeDestroy(): 做一些收尾的工作
 
 # 6. 自定义过滤器
@@ -103,15 +103,15 @@
 	
 # 7. vue内置指令
 	v-text/v-html: 指定标签体
-    	* v-text : 当作纯文本
+		* v-text : 当作纯文本
 		* v-html : 将value作为html标签来解析
 	v-if v-else v-show: 显示/隐藏元素
 		* v-if : 如果vlaue为true, 当前标签会输出在页面中
 		* v-else : 与v-if一起使用, 如果value为false, 将当前标签输出到页面中
 		* v-show: 就会在标签中添加display样式, 如果vlaue为true, display=block, 否则是none
 	v-for : 遍历
-		* 遍历数组 : v-for="(person, index) in persons"   
-		* 遍历对象 : v-for="value in person"   $key
+		* 遍历数组 : v-for="(person, index) in persons"  :key="index"   
+		* 遍历对象 : v-for="(value, key) in person"  
 	v-on : 绑定事件监听
 		* v-on:事件名, 可以缩写为: @事件名
 		* 监视具体的按键: @keyup.keyCode   @keyup.enter
@@ -123,7 +123,6 @@
 		* :class
 		  * :class="a"
 			* :class="{classA : isA, classB : isB}"
-			* :class="[classA, classB]"
 		* :style
 			:style="{color : color}"
 	v-model
